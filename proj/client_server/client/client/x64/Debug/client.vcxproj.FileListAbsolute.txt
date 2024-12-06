@@ -1,5 +1,0 @@
-C:\Users\folad\source\repos\client\client\x64\Debug\client.exe
-C:\Users\folad\source\repos\Folader\localserv\client\client\x64\Debug\client.exe
-C:\Users\Zver\Desktop\localserv-main\client\client\x64\Debug\client.exe
-C:\Users\Zver\Desktop\localserv\client\client\x64\Debug\client.exe
-C:\Users\Zver\Desktop\uni\modprog\proj\client_server\client\client\x64\Debug\client.exe

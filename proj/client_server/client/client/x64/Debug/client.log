@@ -1,4 +1,0 @@
-﻿  client.cpp
-C:\Users\Zver\Desktop\uni\modprog\proj\client_server\client\client\client.cpp(59,61): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Zver\Desktop\uni\modprog\proj\client_server\client\client\client.cpp(62,57): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-  client.vcxproj -> C:\Users\Zver\Desktop\uni\modprog\proj\client_server\server\x64\Debug\client.exe
