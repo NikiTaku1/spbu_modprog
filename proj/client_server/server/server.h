@@ -1,26 +1,27 @@
-#include <QTcpServer>
+#ifndef SERVER_H
+#define SERVER_H
+
 #include <QObject>
+#include <QTcpServer>
+#include <QTcpSocket>
 #include <QMap>
-#include <QFile>
-#include <QDataStream>
-#include <QHash>
-#include <QList>
 #include <QString>
+#include <QByteArray>
 
 class Server : public QObject {
     Q_OBJECT
 public:
-    Server(QObject *parent = nullptr);
+    explicit Server(QObject *parent = nullptr);
     ~Server();
 
 private slots:
     void newConnection();
-    void handleClient(QTcpSocket* socket);
-    void relayMessage(QTcpSocket* sender, QByteArray message);
 
 private:
     QTcpServer* tcpServer;
-    QHash<QTcpSocket*, QString> clientNames; // Map sockets to client names
     QList<QTcpSocket*> connectedClients;
-    QByteArray getAllFilesData(const QString& directory);
+    QMap<QTcpSocket*, QString> clientNames;
+    void relayMessage(QTcpSocket* sender, const QString& message); // Corrected declaration
 };
+
+#endif // SERVER_H
