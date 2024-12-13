@@ -1,9 +1,0 @@
-C:/Users/Zver/Desktop/uni/modprog/hw/hw/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release1/CMakeFiles/hw.dir
-C:/Users/Zver/Desktop/uni/modprog/hw/hw/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release1/CMakeFiles/edit_cache.dir
-C:/Users/Zver/Desktop/uni/modprog/hw/hw/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release1/CMakeFiles/rebuild_cache.dir
-C:/Users/Zver/Desktop/uni/modprog/hw/hw/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release1/CMakeFiles/list_install_components.dir
-C:/Users/Zver/Desktop/uni/modprog/hw/hw/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release1/CMakeFiles/install.dir
-C:/Users/Zver/Desktop/uni/modprog/hw/hw/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release1/CMakeFiles/install/local.dir
-C:/Users/Zver/Desktop/uni/modprog/hw/hw/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release1/CMakeFiles/install/strip.dir
-C:/Users/Zver/Desktop/uni/modprog/hw/hw/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release1/CMakeFiles/hw_autogen_timestamp_deps.dir
-C:/Users/Zver/Desktop/uni/modprog/hw/hw/build/Desktop_Qt_6_5_3_MinGW_64_bit-Release1/CMakeFiles/hw_autogen.dir
