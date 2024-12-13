@@ -9,15 +9,9 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QWidget>
-#include <QLabel> // Add this line to include QLabel
-
-QT_BEGIN_NAMESPACE
-class QTextEdit;
-class QLineEdit;
-class QPushButton;
-class QVBoxLayout;
-class QLabel; // Add this line to forward declare QLabel
-QT_END_NAMESPACE
+#include <QLabel>
+#include <QMessageBox>
+#include <QTimer>
 
 class Client : public QObject {
     Q_OBJECT
@@ -32,7 +26,7 @@ private slots:
     void readyRead();
     void errorOccurred(QAbstractSocket::SocketError socketError);
     void sendMessage();
-    void updateUsernameLabel(); // Added this slot
+    void updateUsernameLabel();
 
 private:
     QTcpSocket socket;
@@ -41,7 +35,8 @@ private:
     QPushButton* sendButton;
     QVBoxLayout* layout;
     QString username;
-    QLabel* usernameLabel; // Add this line to declare usernameLabel
+    QLabel* usernameLabel;
+    QTimer* connectTimer;
 };
 
 #endif // CLIENT_H

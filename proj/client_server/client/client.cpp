@@ -22,6 +22,16 @@ Client::Client(QWidget *parent) : QObject(parent) {
     window->setLayout(layout);
     window->show();
 
+    // Crucial: Use a timer to check for connection status.
+    connectTimer = new QTimer(this);
+    connect(connectTimer, &QTimer::timeout, this, [this](){
+        if(socket.state() != QAbstractSocket::ConnectedState){
+            QMessageBox::warning(nullptr, "Connection Error", "Failed to connect to server.");
+            socket.close();
+            deleteLater(); // Important: Delete the client object when connection fails
+        }
+    });
+    connectTimer->start(2000); // Check connection every 2 seconds.
 
     //Connect signals and slots.
     connect(&socket, &QTcpSocket::connected, this, &Client::connected);
@@ -58,10 +68,13 @@ QString Client::getUsernameFromUser(){
 void Client::connected() {
     qDebug() << "Connected to server";
     textEdit->append("Connected to server");
-    if (!username.isEmpty()) {
-        socket.write((username + ":" + "Connected").toUtf8()); //Send Username and connection message to server
-    }
     updateUsernameLabel();
+    // Important: Stop the connection timer once connected.
+    connectTimer->stop();
+
+    if (!username.isEmpty()) {
+        socket.write((username + ":" + "Connected").toUtf8());
+    }
 }
 
 void Client::updateUsernameLabel(){
@@ -89,19 +102,23 @@ void Client::errorOccurred(QAbstractSocket::SocketError socketError) {
 
 void Client::sendMessage() {
     QString message = lineEdit->text();
-    if (message.isEmpty()) {
-        return; // Don't send empty messages
-    }
+    if (message.isEmpty()) return;
+
     if (message == "exit") {
         socket.disconnectFromHost();
         return;
     }
-    if (!username.isEmpty()) {
-        socket.write((username + ": " + message).toUtf8());
+
+    QWidget* parentWidget = qobject_cast<QWidget*>(this->parent());
+    if (socket.state() == QAbstractSocket::ConnectedState) {
+        socket.write((username + ": " + message).toUtf8()); // Send message without username prefix
+        socket.flush();
+        lineEdit->clear();
+        textEdit->append((username + ": " + message)); //Append message directly
     } else {
-        socket.write(message.toUtf8());
+        if (parentWidget)
+            QMessageBox::warning(parentWidget, "Connection Error", "Not connected to the server.");
+        else
+            QMessageBox::warning(nullptr, "Connection Error", "Not connected to the server.");
     }
-    socket.flush();
-    lineEdit->clear();
-    textEdit->append((username.isEmpty() ? "Anonymous" : username) + ": " + message);
 }
